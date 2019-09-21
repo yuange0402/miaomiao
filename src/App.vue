@@ -1,29 +1,10 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+
+    <!--keep-alive 大概的意思是当组件被打开后，然后被放入后台，然后数据并不会被清除，而是放在了内存中，再次返回的时候
+    还是原来的样子，如果每次进入页面都需要获取最新的数据还要做另外的处理。
+    -->
+    <keep-alive>
+        <router-view/>
+    </keep-alive>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
