@@ -3,37 +3,85 @@
         <div class="search_input">
             <div class="search_input_wrapper">
                 <i class="iconfont icon-sousuo"></i>
-                <input type="text">
+                <input type="text" v-model="searchMsg">
             </div>
         </div>
+
+        <!--
+        cat: "灾难,动作,剧情"
+dir: "陈国辉"
+dur: 120
+enm: "The Bravest"
+globalReleased: true
+id: 1243361
+img: "http://p0.meituan.net/w.h/movie/f75fcb7696d55452e32794b2219700b9840805.jpg"
+movieType: 0
+nm: "烈火英雄"
+onlinePlay: false
+pubDesc: "2019-08-01大陆上映"
+rt: "2019-08-01"
+sc: 9.4
+show: ""
+showst: 3
+star: "黄晓明,杜江,谭卓"
+type: 0
+ver: "2D/IMAX 2D/中国巨幕/全景声/starmax/4DX"
+version: "v2d imax"
+vodPlay: false
+wish: 164442
+wishst: 0
+__proto__: Ob
+        -->
         <div class="search_result">
             <h3>电影/电视剧/综艺</h3>
             <ul>
-                <li>
-                    <div class="img"><img src="/images/movie_1.jpg"></div>
+                <li v-for="movie in searchList">
+                    <div class="img"><img :src="movie.img | setWH('128.180')"></div>
                     <div class="info">
-                        <p><span>无名之辈</span><span>8.5</span></p>
-                        <p>A Cool Fish</p>
-                        <p>剧情,喜剧,犯罪</p>
-                        <p>2018-11-16</p>
+                        <p><span>{{movie.nm}}</span><span>{{movie.sc}}</span></p>
+                        <p>{{movie.enm}}</p>
+                        <p>{{movie.cat}}</p>
+                        <p>{{movie.rt}}</p>
                     </div>
                 </li>
-                <li>
-                    <div class="img"><img src="/images/movie_1.jpg"></div>
-                    <div class="info">
-                        <p><span>无名之辈</span><span>8.5</span></p>
-                        <p>A Cool Fish</p>
-                        <p>剧情,喜剧,犯罪</p>
-                        <p>2018-11-16</p>
-                    </div>
-                </li>
+
             </ul>
         </div>
     </div>
 </template>
 <script>
     export default {
-        name:'search'
+        name:'search',
+        data(){
+            return{
+                searchMsg:'',
+                searchList:[]
+            }
+        },
+        methods:{
+            cancelRequest(){
+                if(typeof this.source === 'function'){
+                    this.source('终止请求');
+                }
+            }
+        },
+       watch:{
+            searchMsg(msg){
+                var that =this;
+//              调用取消方法
+                this.cancelRequest();
+                this.axios.get('/api/searchList?cityId=10&kw='+msg,{
+                    cancelTokenn:new this.axios.CancelToken(function (c) {
+                        that.source = c;
+                    })
+                }).then((res)=>{
+                    this.searchList = res.data.data.movies.list;
+                })
+            },
+       }
+
+
+
     }
 
 </script>

@@ -5,7 +5,8 @@
 </template>
 <script>
     export default{
-        name:"header",
+//        给没有个组件起一个名字会便于调试（更友好的报错提示）和递归调用
+        name:"headerr",
         props:{
             title:{
                 type : String,

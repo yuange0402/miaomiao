@@ -1,6 +1,6 @@
 <template>
    <div>
-       <Header title="喵喵电影"/>
+       <Headerr title="喵喵电影"/>
 
        <div id="content">
            <div class="movie_menu">
@@ -31,14 +31,14 @@
 <script>
 
 //    在组件里面引入另外的组件，这个组件是复用的
-    import Header from '@/components/Header';
+    import Headerr from '@/components/Header';
     import TabBar from '@/components/TabBar';
 
 //   把引入进来的第三方组件，注册到自己的组件里面就可以直接在自己的模板里面使用了
     export default {
        name:'movie',
         components: {
-            Header,
+            Headerr,
             TabBar
         }
     }

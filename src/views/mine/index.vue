@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header title="我的喵喵"></Header>
+        <Headerr title="我的喵喵"></Headerr>
         <div class="content">
            <Login></Login>
         </div>
@@ -15,14 +15,14 @@
  * **/
 
 
-    import Header from '@/components/Header';
+    import Headerr from '@/components/Header';
     import TabBar from '@/components/TabBar';
     import Login from '@/components/Login';
 
     export default{
         name:'mine',
         components:{
-             Header,
+             Headerr,
             TabBar,
             Login
         }

@@ -2,7 +2,7 @@
 
     <div>
 
-       <Header title="喵喵影院"/>
+       <Headerr title="喵喵影院"/>
 
         <div id="content">
             <div class="cinema_menu">
@@ -31,14 +31,14 @@
 
 </template>
 <script>
-    import Header from '@/components/Header';
+    import Headerr from '@/components/Header';
     import TabBar from '@/components/TabBar';
 
 
     export default{
         name:'cinema',
         components:{
-            Header,
+            Headerr,
             TabBar
         }
     }
