@@ -12,6 +12,9 @@ Vue.prototype.axios = axios;
 //然后对这个数据进行处理.
 //第二个参数是你自己对过滤器这个方法传递的参数.
 
+//做成全局组件就可以直接使用了，不然的话需要在每个组件里面引入和注册，很麻烦。
+import Scroller from '@/components/Scroller';
+Vue.component('Scroller',Scroller);
 
 Vue.filter('setWH',(url,arg)=>{
    return url.replace(/w\.h/,arg)

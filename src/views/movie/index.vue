@@ -5,7 +5,7 @@
        <div id="content">
            <div class="movie_menu">
                <router-link tag="div" to="/movie/city" class="city_name">
-                   <span>大连</span><i class="iconfont icon-lower-triangle"></i>
+                   <span>{{$store.state.city.nm}}</span><i class="iconfont icon-lower-triangle"></i>
                </router-link>
                <div class="hot_swtich">
                    <router-link to="/movie/nowPlaying" tag="div" class="hot_item">正在热映</router-link>
@@ -19,13 +19,15 @@
            <keep-alive>
                <router-view></router-view>
            </keep-alive>
-
-
        </div>
+
+
+       <AlterMsg></AlterMsg>
 
 
 
        <TabBar/>
+
    </div>
 </template>
 <script>
@@ -33,13 +35,17 @@
 //    在组件里面引入另外的组件，这个组件是复用的
     import Headerr from '@/components/Header';
     import TabBar from '@/components/TabBar';
+    import AlterMsg from '@/components/js/Message';
 
 //   把引入进来的第三方组件，注册到自己的组件里面就可以直接在自己的模板里面使用了
     export default {
        name:'movie',
         components: {
             Headerr,
-            TabBar
+            TabBar,
+            AlterMsg
+
+
         }
     }
 

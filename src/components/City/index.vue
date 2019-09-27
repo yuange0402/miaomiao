@@ -4,7 +4,7 @@
             <div class="city_hot">
                 <h2>热门城市</h2>
                 <ul class="clearfix">
-                    <li v-for="item in hotList">{{item.nm}}</li>
+                    <li v-for="item in hotList" @tap="handleToCity">{{item.nm}}</li>
                 </ul>
             </div>
 
@@ -14,7 +14,7 @@
                 <div>
                     <h2>{{item.index}}</h2>
                     <ul>
-                        <li v-for="city in item.list">{{city.nm}}</li>
+                        <li v-for="city in item.list" @tap="handleToCity">{{city.nm}}</li>
                     </ul>
                 </div>
             </div>
@@ -124,6 +124,17 @@
             },
             handleToIndex(index){
 
+            },
+
+//          点击切换城市，全局状态都要变化
+            handleToCity(nm,id){
+                alert(111)
+//                 console.log(nm,id);
+//              切换状态的方法
+//                this 代表当前的vue对象 $store 代表当前vue对象下面的这个状态管理模块，
+//                commit 方法用来调用你在状态管理文件下面定义的状态切换方法.
+//                'city/CITY_INFO 代表路径,他会去 src 的 stores 文件夹下面去找 city 文件夹 下面的index.js 文件下的CITY_INFO方法.
+//                 this.$store.commit('city/CITY_INFO',{nm,id});
             }
 
 

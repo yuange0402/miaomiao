@@ -1,5 +1,5 @@
 <template>
-    <div class="movie_body">
+    <div class="movie_body" ref = 'movie_body'>
         <ul>
             <!--0:
 globalReleased: true
@@ -32,8 +32,15 @@ wishst: 0-->
 
         </ul>
     </div>
+
+
 </template>
 <script>
+    import BScroll from 'better-scroll';
+
+
+
+
     export default {
         name:'NowPlaying',
         data(){
@@ -46,7 +53,14 @@ wishst: 0-->
                 var msg = res.data.msg;
                 if(msg === 'ok'){
                    console.log(res.data.data.movieList);
-                    this.movieList = res.data.data.movieList;
+//                  给页面添加数据
+                   this.movieList = res.data.data.movieList;
+// betterscroll 必须要等到 渲染完成后再去调用这个函数，去添加滚动效果。
+                    this.$nextTick(()=>{
+                        new BScroll(this.$refs.movie_body,{});
+                    })
+
+
                 }
             })
         }
